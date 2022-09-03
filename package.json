@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
-		"publish": "build",
+		"publish": "",
 		"build:website": "vite build",
 		"build": "svelte-kit sync && svelte-package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
@@ -40,7 +40,7 @@
 		"touchable",
 		"movable"
 	],
-	"repository": "https://github.com/elron/svelte-interactive-carousel",
+	"repository": "https://github.com/elron/svelte-interactive-carousel.git",
 	"homepage": "https://svelte-interactive-carousel.netlify.app/",
 	"author": "Elron Bucai <its@elrons.co.il>"
 }

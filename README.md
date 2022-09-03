@@ -1,5 +1,12 @@
+|`WARNING!` | This package is still under development. It does not do what it says it does (yet!).|
+|-|-|
+
+
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4823de9a-ceec-4b08-a951-007b9543d87e/deploy-status)](https://app.netlify.com/sites/svelte-interactive-carousel/deploys)
 # Interactive Carousel (for Svelte)
+
+
 
 
 

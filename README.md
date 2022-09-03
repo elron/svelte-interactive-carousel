@@ -1,4 +1,8 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4823de9a-ceec-4b08-a951-007b9543d87e/deploy-status)](https://app.netlify.com/sites/svelte-interactive-carousel/deploys)
 # Interactive Carousel (for Svelte)
+
+
+
 
 <!-- ![Svelte Range Slider -- focussed, including some pips](test/public/slider.png) -->
 
@@ -32,9 +36,9 @@ Importable as a ***svelte-component***.
 Open your project and use the command line to install the package;
 
 ```bash
-yarn add svelte-interactive-carousel --dev          # or
-npm install svelte-interactive-carousel --save-dev  # if you prefer npm
-pnpm add svelte-interactive-carousel --save-dev  # if you prefer pnpm
+pnpm add svelte-interactive-carousel   # if you prefer pnpm
+npm i svelte-interactive-carousel      # if you prefer npm
+yarn add svelte-interactive-carousel   # if you prefer yarn
 ```
 
 ## usage

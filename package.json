@@ -1,6 +1,7 @@
 {
 	"name": "svelte-interactive-carousel",
-	"version": "0.0.2",
+	"description": "A smooth, draggable, stylable, responsive, friendly, interactive carousel that is basicly a marquee, but way cooler.",
+	"version": "0.0.3",
 	"scripts": {
 		"dev": "vite dev",
 		"publish": "",
@@ -40,7 +41,14 @@
 		"touchable",
 		"movable"
 	],
-	"repository": "https://github.com/elron/svelte-interactive-carousel.git",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/elron/svelte-interactive-carousel.git"
+	},
 	"homepage": "https://svelte-interactive-carousel.netlify.app/",
-	"author": "Elron Bucai <its@elrons.co.il>"
+	"bugs": {
+		"url": "https://github.com/elron/svelte-interactive-carousel/issues"
+	},
+	"author": "Elron Bucai <its@elrons.co.il>",
+	"license": "ISC"
 }

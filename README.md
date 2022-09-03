@@ -43,10 +43,9 @@ Importable as a ***svelte-component***.
 Open your project and use the command line to install the package;
 
 ```bash
-pnpm add svelte-interactive-carousel   # if you prefer pnpm
-npm i svelte-interactive-carousel@latest --save-dev -
--force      # if you prefer npm
-yarn add svelte-interactive-carousel   # if you prefer yarn
+pnpm add svelte-interactive-carousel --save-dev             # for pnpm
+npm i svelte-interactive-carousel@latest --save-dev --force # for npm
+yarn add svelte-interactive-carousel --dev                  # for yarn
 ```
 
 ## usage

@@ -1,7 +1,7 @@
 {
 	"name": "svelte-interactive-carousel",
 	"description": "A smooth, draggable, stylable, responsive, friendly, interactive carousel that is basicly a marquee, but way cooler.",
-	"version": "0.0.10",
+	"version": "0.0.11",
 	"scripts": {
 		"dev": "vite dev",
 		"publish": "",

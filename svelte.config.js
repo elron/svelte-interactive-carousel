@@ -3,7 +3,8 @@ import adapter from '@sveltejs/adapter-auto';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter()
+		// adapter: adapter()
+		adapter: netlify({ edge: true }) // temporarily fix https://github.com/sveltejs/kit/issues/6462
 	}
 };
 

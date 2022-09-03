@@ -1,38 +1,166 @@
-# create-svelte
+# Interactive Carousel (for Svelte)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+<!-- ![Svelte Range Slider -- focussed, including some pips](test/public/slider.png) -->
 
-## Creating a project
+A smooth, draggable, stylable, responsive, friendly, interactive carousel that is basicly a marquee, but way cooler.
+Importable as a ***svelte-component***.
+<!-- , or **used directly in any javascript application**. -->
 
-If you're seeing this, you've probably already done this step. Congrats!
+---
+
+📔 | Docs | [Full Documentation & Examples](https://svelte-interactive-carousel.netlify.app/)
+:--: | -----: | :------
+📦 | **NPM** |[Node Module details](https://www.npmjs.com/package/svelte-interactive-carousel)
+<!-- 📝 | **REPL** |[Svelte component demo](https://svelte.dev/repl/030797781fd64ad88302d1343f5b2c43?version=3) -->
+<!-- ❤ | **Codepen** |[Plain JS component demo](https://codepen.io/simeydotme/pen/KKNJdbK) -->
+
+---
+
+## features
+
+<!-- ![Features of the range slider plugin (written below)](test/public/range-slider.png) -->
+
+- ✨ fully customisable, stylable & accessible
+- 👆 draggable
+- 🖱 scrollable (trackpad horizontal scrolling)
+- 💻 responsive
+<!-- - ⌨ accessible -->
+- 🎭 animated
+
+## install
+
+Open your project and use the command line to install the package;
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+yarn add svelte-interactive-carousel --dev          # or
+npm install svelte-interactive-carousel --save-dev  # if you prefer npm
+pnpm add svelte-interactive-carousel --save-dev  # if you prefer pnpm
 ```
 
-## Developing
+## usage
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### in a svelte project
 
-```bash
-npm run dev
+Assuming you have a Svelte app up and running;
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```html
+<script>
+  import {InteractiveCarousel, Slide} from "svelte-interactive-carousel";
+</script>
+
+<InteractiveCarousel values={[50]} pips>
+    <Slide>1</Slide>
+    <Slide>2</Slide>
+    <Slide>3</Slide>
+</InteractiveCarousel>
 ```
 
-## Building
+<!-- ### as a regular JS file
 
-To create a production version of your app:
+If you're not building a svelte-app, you can use the [`/dist/`
+version of the script `/dist/svelte-interactive-carousel.js`](dist/svelte-interactive-carousel.js) and include it
+with a regular `<script>` tag. This should even work with jQuery.
 
-```bash
-npm run build
+```html
+<script src="./js/vendor/svelte-interactive-carousel.js" />
+
+<div id="my-slider"></div>
+
+<script>
+  var mySlider = new RangeSliderPips({
+    target: document.querySelector("#my-slider"),
+    props: { values: [50], pips: true }
+  });
+</script>
 ```
 
-You can preview the production build with `npm run preview`.
+### as a JS module
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+If you're building a bleeding-edge JS application (maybe Vue or React), you might
+want to use js imports (`import`)
+
+```js
+import RangeSlider from "./node_modules/svelte-interactive-carousel/dist/svelte-interactive-carousel.mjs";
+
+var mySlider = new RangeSlider({
+  target: node, // js reference to a DOM element
+  props: { values: [50], pips: true }
+});
+``` -->
+<!-- 
+---
+
+## props (options)
+
+### carousel props
+
+prop | type | default | description
+-----|------|---------|-------------
+**values** | `Array` | `[50]` | Array of values to apply on the slider. Multiple values creates multiple handles. (_**note:** A slider with `range` property set can only have two values max_)
+**min** | `Number` | `0` | Minimum value for the slider _(should be `< max`)_
+**max** | `Number` | `100` | Maximum value for the slider _(should be `> min`)_
+**step** | `Number` | `1` | Every `nth` value to allow handle to stop at _(should be a positive value)_
+**range** | `Boolean`/`String` | `false` | Whether to style as a range picker. Use `range='min'` or `range='max'` for min/max variants
+**pushy** | `Boolean` | `false` | If `range` is `true`, then this boolean decides if one handle will push the other along
+**float** | `Boolean` | `false` | Set true to add a floating label above focussed handles
+**vertical** | `Boolean` | `false` | Make the slider render vertically (lower value on bottom)
+**pips** | `Boolean` | `false` | Whether to show pips/notches on the slider
+**pipstep** | `Number` | `1`/`10`/`20` | Every `nth` step to show a pip for. This has multiple defaults depending on `values` property
+**first** | `Boolean`/`String` | `false` | Whether to show a pip or label for the first value on slider. Use `first='label'` to show a label value
+**last** | `Boolean`/`String` | `false` | Whether to show a pip or label for the last value on slider. Use `last='label'` to show a label value
+**rest** | `Boolean`/`String` | `false` | Whether to show a pip or label for all other values. Use `rest='label'` to show a label value
+**all** | `Boolean`/`String` | `false` | Whether to show a pip or label for all values. Same as combining `first`, `last` and `rest`. Use `all='label'` to show a label value
+**prefix** | `String` | `""` | A string to prefix to all displayed values
+**suffix** | `String` | `""` | A string to suffix to all displayed values
+**reversed** | `Boolean` | `false` | Reverse the orientation of min/max
+**hoverable** | `Boolean` | `true` | Whether hover styles are enabled for both handles and pips/values
+**disabled** | `Boolean` | `false` | Determine if the slider is disabled, or enabled _(only disables interactions, and events)_
+**id** | `String` | `""` | Give the slider a unique ID for use in styling
+**formatter** | `Function` | `(v,i,p) => v` | A function to re-format values before they are displayed (`v = value, i = pip index, p = percent`)
+**handleFormatter** | `Function` | `formatter` | A function to re-format values on the handle/float before they are displayed. Defaults to the same function given to the `formatter` property (`v = value, i = handle index, p = percent`)
+**springValues** | `Object` | `{ stiffness: 0.15, damping: 0.4 }` | Svelte spring physics object to change the behaviour of the handle when moving
+**slider** | `Element` | `undefined` | DOM reference for binding to the main `<div />` of the component (`bind:slider='ref'`)
+
+### slider events (dispatched)
+
+event | example | `event.detail` | description
+------|------------|--------|-------------
+**start** | `on:start={(e) => { ... }}` | `{ activeHandle: Integer, value: Float, values: Array }` | Event fired when the user begins interaction with the slider
+**change** | `on:change={(e) => { ... }}` | `{ activeHandle: Integer, startValue: Float, previousValue: Float, value: Float, values: Array }` | Event fired when the user changes the value; returns the previous value, also
+**stop** | `on:stop={(e) => { ... }}` | `{ activeHandle: Integer, startValue: Float, value: Float, values: Array }` | Event fired when the user stops interacting with slider; returns the beginning value, also
+
+**[📔📘📖 _Full Documentation & Examples_](https://simeydotme.github.io/svelte-interactive-carousel/)**
+
+## styling
+
+**Styling should mostly be done with CSS.**  
+There's a [bunch of css variables for controlling the colors](https://simeydotme.github.io/svelte-interactive-carousel/#styling) of the elements. 
+And the slider is fluid horizontally, with the size of things controlled by font-size. So you may change he `font-size` on the `.rangeSlider` base
+element to change the scale of everything.
+
+If you require more fine control of the widths, heights, etc, then you may override the default css. This can be easier by using the `id` prop
+to give your slider a unique id.
+
+Values of labels can be styled with CSS, and the format can be modified with the `formatter()` function prop. And animation of the handles is
+controlled by the `springValues` object prop.
+
+## contribute
+
+I am very happy to accept;
+
+- 🌟 suggestions/requests for new features or changes
+- 🛠 pull-requests for bug fixes, or issue resolution
+- 🧪 help with creating a proper test-suite
+
+[Read the CONTRIBUTING.md](./CONTRIBUTING.md)
+
+---
+
+## support / donate  
+I'd be super excited if you find this project useful and wish to donate a small amount for my efforts!
+
+|  |  |         |
+|--|--:|---------|
+| <img src="https://user-images.githubusercontent.com/2817396/149629283-6002944f-9253-4e35-917d-89b476deae4e.png" width=20> | [![£1 One Pound Donation](https://user-images.githubusercontent.com/2817396/149629980-08b9a952-bd6a-4c23-be78-05e3fd534352.png)](https://www.paypal.com/paypalme/simey/1) | [£1 GBP donation](https://www.paypal.com/paypalme/simey/1) |
+| <img src="https://user-images.githubusercontent.com/2817396/149629283-6002944f-9253-4e35-917d-89b476deae4e.png" width=20> | [![£5 Five Pounds Donation](https://user-images.githubusercontent.com/2817396/149629994-3a99770c-d333-46e7-9818-ab6b18ad0202.png)](https://www.paypal.com/paypalme/simey/5) | [£5 GBP donation](https://www.paypal.com/paypalme/simey/5) |
+| <img src="https://user-images.githubusercontent.com/2817396/149629283-6002944f-9253-4e35-917d-89b476deae4e.png" width=20> | [![£10 Ten Pounds Donation](https://user-images.githubusercontent.com/2817396/149630000-95aa4234-ff67-4e7c-a7f4-ffd52f25e6d8.png)](https://www.paypal.com/paypalme/simey/10) | [£10 GBP donation](https://www.paypal.com/paypalme/simey/10) | -->
